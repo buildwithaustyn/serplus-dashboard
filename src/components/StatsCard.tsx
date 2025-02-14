@@ -25,15 +25,15 @@ export default function StatsCard({
   if (isAiScore) {
     const percentage = parseInt(value) || 0;
     return (
-      <div className="dashboard-card p-6 bg-white dark:bg-[#262A30] border border-gray-200 dark:border-[#363A3F]">
+      <div className="dashboard-card p-6 bg-white border border-gray-200">
         <div className="flex justify-between items-start">
           <div>
-            <p className="text-sm text-gray-500 dark:text-gray-400">{title}</p>
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white">{value}/100</h3>
+            <p className="text-sm text-gray-500">{title}</p>
+            <h3 className="text-2xl font-bold text-gray-900">{value}/100</h3>
             <p className="text-sm text-green-500">{change}</p>
           </div>
           <div
-            className="w-[50px] h-[50px] rounded-full flex items-center justify-center font-bold text-gray-900 dark:text-white"
+            className="w-[50px] h-[50px] rounded-full flex items-center justify-center font-bold text-gray-900"
             style={{
               background: `conic-gradient(#3B82F6 ${percentage}%, #e5e7eb ${percentage}%)`,
             }}
@@ -46,11 +46,11 @@ export default function StatsCard({
   }
 
   return (
-    <div className="dashboard-card p-6 bg-white dark:bg-[#262A30] border border-gray-200 dark:border-[#363A3F]">
+    <div className="dashboard-card p-6 bg-white border border-gray-200">
       <div className="flex justify-between items-start">
         <div>
-          <p className="text-sm text-gray-500 dark:text-gray-400">{title}</p>
-          <h3 className="text-2xl font-bold text-gray-900 dark:text-white">{value}</h3>
+          <p className="text-sm text-gray-500">{title}</p>
+          <h3 className="text-2xl font-bold text-gray-900">{value}</h3>
           <p className="text-sm text-green-500">{change}</p>
         </div>
         <div className={`p-3 ${iconBgColor} rounded-lg`}>

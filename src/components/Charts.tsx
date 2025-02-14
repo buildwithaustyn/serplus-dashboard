@@ -4,11 +4,7 @@ import dynamic from 'next/dynamic';
 import { ApexOptions } from 'apexcharts';
 const ReactApexChart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
-interface ChartProps {
-  isDark: boolean;
-}
-
-export function LeadTrendsChart({ isDark }: ChartProps) {
+export function LeadTrendsChart() {
   const options: ApexOptions = {
     chart: {
       height: 350,
@@ -22,28 +18,30 @@ export function LeadTrendsChart({ isDark }: ChartProps) {
       enabled: false
     },
     stroke: {
-      curve: 'smooth'
+      curve: 'smooth',
+      width: 2,
+      colors: ['#3b82f6', '#10b981']
     },
     xaxis: {
       categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
       labels: {
         style: {
-          colors: isDark ? '#a0aec0' : '#4b5563'
+          colors: '#4b5563'
         }
       }
     },
     yaxis: {
       labels: {
         style: {
-          colors: isDark ? '#a0aec0' : '#4b5563'
+          colors: '#4b5563'
         }
       }
     },
     tooltip: {
-      theme: isDark ? 'dark' : 'light'
+      theme: 'light'
     },
     grid: {
-      borderColor: isDark ? '#363A3F' : '#e5e7eb',
+      borderColor: '#e5e7eb',
       strokeDashArray: 5
     },
     fill: {
@@ -56,7 +54,7 @@ export function LeadTrendsChart({ isDark }: ChartProps) {
       }
     },
     theme: {
-      mode: isDark ? 'dark' : 'light'
+      mode: 'light'
     }
   };
 
@@ -72,14 +70,14 @@ export function LeadTrendsChart({ isDark }: ChartProps) {
   ];
 
   return (
-    <div className="dashboard-card p-6 bg-white dark:bg-[#262A30] border border-gray-200 dark:border-[#363A3F]">
-      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Lead Generation Trends</h3>
+    <div className="dashboard-card p-6 bg-white border border-gray-200">
+      <h3 className="text-lg font-semibold text-gray-900 mb-4">Lead Generation Trends</h3>
       <ReactApexChart options={options} series={series} type="area" height={350} />
     </div>
   );
 }
 
-export function LeadSourcesChart({ isDark }: ChartProps) {
+export function LeadSourcesChart() {
   const options: ApexOptions = {
     chart: {
       type: 'donut',
@@ -87,7 +85,7 @@ export function LeadSourcesChart({ isDark }: ChartProps) {
     },
     labels: ['Organic Search', 'Paid Ads', 'Social Media', 'Referrals'],
     theme: {
-      mode: isDark ? 'dark' : 'light'
+      mode: 'light'
     },
     responsive: [{
       breakpoint: 480,
@@ -101,15 +99,15 @@ export function LeadSourcesChart({ isDark }: ChartProps) {
       }
     }],
     tooltip: {
-      theme: isDark ? 'dark' : 'light'
+      theme: 'light'
     }
   };
 
   const series = [44, 55, 13, 43];
 
   return (
-    <div className="dashboard-card p-6 bg-white dark:bg-[#262A30] border border-gray-200 dark:border-[#363A3F]">
-      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Lead Sources Distribution</h3>
+    <div className="dashboard-card p-6 bg-white border border-gray-200">
+      <h3 className="text-lg font-semibold text-gray-900 mb-4">Lead Sources Distribution</h3>
       <ReactApexChart options={options} series={series} type="donut" height={350} />
     </div>
   );
